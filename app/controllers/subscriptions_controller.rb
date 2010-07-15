@@ -1,5 +1,8 @@
 class SubscriptionsController < ApplicationController
   before_filter :get_product, :only => [:new, :create]
+  skip_before_filter :current_account
+  
+  layout 'public'
   
   def new
     @account = Account.new
