@@ -3,7 +3,9 @@ require 'spec_helper'
 describe UserSessionsController do
   
   before(:each) do
-    @request.host = "#{mock_subdomain}.example.com"
+    @request.host = "test.example.com"
+    @current_account = mock_model(Account)
+    Account.stub!(:find_by_subdomain).and_return(@current_account)
   end
   
   def mock_usersession(stubs={})

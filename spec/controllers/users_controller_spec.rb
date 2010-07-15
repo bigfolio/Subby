@@ -1,7 +1,14 @@
 require 'spec_helper'
 
 describe UsersController do
-
+  
+  before(:each) do
+    @request.host = "test.example.com"
+    @current_account = mock_model(Account)
+    Account.stub!(:find_by_subdomain).and_return(@current_account)
+    login
+  end
+  
   def mock_user(stubs={})
     @mock_user ||= mock_model(User, stubs).as_null_object
   end
