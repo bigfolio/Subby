@@ -1,0 +1,61 @@
+<h2>Signup: <%= @product.name %> Plan</h2>
+
+<% form_for @account, :url => product_subscriptions_path(@product), :html => {:method => :post} do |form| %>
+
+	<%= form.error_messages %>
+	<h2>About your business</h2>
+	<fieldset>
+		<p><%= form.label :name, 'Business name' %><br />
+		<%= form.text_field :name %></p>		
+		
+		<p><%= form.label :first_name %><br />
+		<%= form.text_field :first_name %>	</p>	
+
+		<p><%= form.label :last_name %><br />
+		<%= form.text_field :last_name %></p>
+		
+		<p><%= form.label :email %><br />
+		<%= form.text_field :email %></p>
+	
+		<p><%= form.label :domain, 'Domain of your site' %><br />
+		<%= form.text_field :domain %></p>		
+
+		<p><%= form.label :subdomain, 'Choose a temporary subdomain' %><br />
+		<%= form.text_field :subdomain %>.mydomain.com</p>
+	</fieldset>
+	
+	<h2>Create a login</h2>
+  <fieldset>
+    <% form.fields_for(:users) do |u| %>
+      <p><%= u.label :username, 'Choose a login' %><br /> <%= u.text_field :username %></p>
+      
+      <p><%= u.label :email %><br /> <%= u.text_field :email %></p>
+      
+      <p><label for="user_password">Password</label><br />
+      <%= u.password_field :password %></p>
+      
+      <p><label for="user_password_confirmation">Password Confirmation</label><br />
+      <%= u.password_field :password_confirmation %></p>
+    <% end %>
+  </fieldset>
+	
+	<h2>Enter your billing information</h2>
+	<fieldset>
+		<p><%= form.label :credit_card_number, "Credit Card Number" %><br />
+		<%= form.text_field :credit_card_number %></p>
+
+		<p><%= form.label :cvv %><br />
+		<%= form.text_field :cvv %></p>
+
+		<p><%= form.label :expiration_month %><br />
+		<%= form.text_field :expiration_month %></p>
+
+		<p><%= form.label :expiration_year %><br />
+		<%= form.text_field :expiration_year %></p>
+	</fieldset>
+	
+	<p><%= form.submit "Submit" %></p>
+	
+	
+	
+<% end %>

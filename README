@@ -1,0 +1,17 @@
+== Subby App
+
+This is my starting point for bootstrapping a web-app that includes:
+
+- Chargify for billing and subscriptions
+- Subdomain-based accounts (that also allow custom domain mapping)
+- User authentication (via AuthLogic)
+
+== Requirements
+
+Subby is using Rails 3 (beta 4). It also requires the Rails 3 branch of a forked version of the AuthLogic gem and a forked version of the Chargify gem. 
+
+== Known Issues
+
+With AuthLogic, the authenticates_many method is currently broken–preventing you from easily scoping user sessions to a subdomain. So far, this has been patched by updating the require_user method in the application controller. 
+
+Some rspec tests are still failing ... mainly because I'm a n00b at rspec. 
