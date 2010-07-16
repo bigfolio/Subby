@@ -13,7 +13,7 @@ SubbyDevise::Application.routes.draw do |map|
   get "user_sessions/destroy"
 
   resources :users
-  resources :accounts
+  resource :account
 
   controller :user_sessions do 
     get 'login' => :new

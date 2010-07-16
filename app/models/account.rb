@@ -1,6 +1,6 @@
 class Account < ActiveRecord::Base
   
-  has_many :users
+  has_many :users, :dependent => :destroy
   
   accepts_nested_attributes_for :users
   authenticates_many :user_sessions, :find_options => { :limit => 1 } 
@@ -9,6 +9,8 @@ class Account < ActiveRecord::Base
   
   attr_accessor :expiration_month, :expiration_year, 
                 :credit_card_number, :cvv, :user
+  
+  before_destroy :cancel_subscription
                 
   def create_and_subscribe(product_id)
     return unless self.valid?
@@ -34,6 +36,11 @@ class Account < ActiveRecord::Base
   end         
   
   private
+  
+    def cancel_subscription
+      Chargify::Subscription.delete(subscription_id)
+    end
+  
     def customer_params
       {
         :first_name   => first_name,
