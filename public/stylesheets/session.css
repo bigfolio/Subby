@@ -1,0 +1,13 @@
+body {
+	background-color:#eee;
+	background-color:-webkit-gradient(linear, 0% 0%, 0% 100%, from(#D9D9D9), to(#eeeeee));
+	background-color:-moz-linear-gradient(50% 50% 90deg,#D9D9D9, #EEEEEE);
+}
+#login {
+	margin-top:125px;
+	background:#fff;
+	border-radius:12px;
+	padding:20px;
+	box-shadow: 10px 10px 5px #888;
+	-webkit-box-shadow: 0px 2px 5px #666;
+}
