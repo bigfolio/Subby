@@ -1,0 +1,8 @@
+header {
+	background:#ccc;
+}
+aside#sidebar {
+	background:#eee;
+	width:200px;
+	float:left;
+}
